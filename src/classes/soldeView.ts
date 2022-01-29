@@ -10,7 +10,9 @@ export class soldeView implements IObserver {
     }
 
     update(state:Reservation){
+        //récuparation de la solde totale
         let solde = state.getSolde();
+        //insertion au niveau de la div concernée
         this.div.innerHTML=solde.toString();
         console.log('update: ',solde);
     }

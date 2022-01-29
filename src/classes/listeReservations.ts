@@ -10,8 +10,14 @@ export class ListeReservationView implements IObserver {
     }
 
     update(state:Reservation) {
+
+        //récupération du tableau d'appartements
         let arrayR = state.getAppartements();
+
+        //initialisation à "vide" de l'ul pour résestituer que les éléments compris dans le tableau
         this.ul.innerHTML=''
+
+        //Application sur chaque élément du tableau
         arrayR.forEach(reservation => {
             let liHtml = document.createElement('li');
             let headHtml = document.createElement('h4');

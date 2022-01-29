@@ -1,6 +1,6 @@
 export interface IDecorateur {
-    prix(): number;
-    showDetails(): string;
-    getNombre():number;
+  getNombre(): number;
+  prix(): number;
+  showDetails(): string;
 
-  }
+}

@@ -12,20 +12,27 @@ export class Reservation implements ISubject {
         this.solde=prix;
 
     }
+    //enregistrer un Observateur
     subscribe(obs: IObserver) {
         this.observers.push(obs);
         obs.update(this)
         console.log('subscribe');
     }
+
+    //annuler l'enregistrement d'un Observateur 
     unsubscribe(obs: IObserver) {
         let index = this.observers.indexOf(obs)
         this.observers.splice(index, 1)
         console.log(('unsubscribe'));
     }
+    //le notifier
     notify() {
         this.observers.forEach(obs => obs.update(this))
         console.log('notify');
     }
+
+    //ajout d'un appartement au tableau d'Appartements avec le calcul de la solde en se basant
+    //sur le prix normal et celui des extras.
     addAppartement(unAppartement: Appartement) {
         this.Appartements.push(unAppartement);
         this.solde += unAppartement.prix();
@@ -44,10 +51,13 @@ export class Reservation implements ISubject {
         }
         this.notify()
     }
+
+    //retourne le tableau d'appartements
     getAppartements() {
         return this.Appartements;
     }
     
+    //retourne la solde totale
     getSolde() {
         return this.solde;
     }

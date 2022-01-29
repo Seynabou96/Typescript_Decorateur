@@ -133,10 +133,13 @@ function () {
   }
 
   ListeReservationView.prototype.update = function (state) {
-    var _this = this;
+    var _this = this; //récupération du tableau d'appartements
 
-    var arrayR = state.getAppartements();
-    this.ul.innerHTML = '';
+
+    var arrayR = state.getAppartements(); //initialisation à "vide" de l'ul pour résestituer que les éléments compris dans le tableau
+
+    this.ul.innerHTML = ''; //Application sur chaque élément du tableau
+
     arrayR.forEach(function (reservation) {
       var liHtml = document.createElement('li');
       var headHtml = document.createElement('h4');
@@ -190,7 +193,7 @@ var __extends = this && this.__extends || function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.appartementAvecAbonnementServiceMenage = exports.appartementAvecAbonnementParking = exports.appartementAvecAbonnementResto = exports.AppartementAvecAbonnement = void 0;
+exports.appartementAvecAbonnementServiceMenage = exports.appartementAvecAbonnementParking = exports.appartementAvecAbonnementResto = exports.AppartementAvecAbonnement = void 0; //classe des Abonnements comme Options
 
 var AppartementAvecAbonnement =
 /** @class */
@@ -198,15 +201,18 @@ function () {
   function AppartementAvecAbonnement(appartement, tarif) {
     this.AppartementSimple = appartement;
     this.tarif = tarif;
-  }
+  } //retourne le nombre d'appartements
+
 
   AppartementAvecAbonnement.prototype.getNombre = function () {
     return this.AppartementSimple.getNombre();
-  };
+  }; //retourne le prix de l'abonnement uniquement
+
 
   AppartementAvecAbonnement.prototype.prix = function () {
     return this.tarif * this.getNombre();
-  };
+  }; //methode de base
+
 
   AppartementAvecAbonnement.prototype.showDetails = function () {
     return "".concat(this.AppartementSimple.showDetails(), " + ").concat(this.tarif);
@@ -275,19 +281,22 @@ function () {
     this.Appartements = [];
     this.observers = [];
     this.solde = prix;
-  }
+  } //enregistrer un Observateur
+
 
   Reservation.prototype.subscribe = function (obs) {
     this.observers.push(obs);
     obs.update(this);
     console.log('subscribe');
-  };
+  }; //annuler l'enregistrement d'un Observateur 
+
 
   Reservation.prototype.unsubscribe = function (obs) {
     var index = this.observers.indexOf(obs);
     this.observers.splice(index, 1);
     console.log('unsubscribe');
-  };
+  }; //le notifier
+
 
   Reservation.prototype.notify = function () {
     var _this = this;
@@ -296,7 +305,9 @@ function () {
       return obs.update(_this);
     });
     console.log('notify');
-  };
+  }; //ajout d'un appartement au tableau d'Appartements avec le calcul de la solde en se basant
+  //sur le prix normal et celui des extras.
+
 
   Reservation.prototype.addAppartement = function (unAppartement) {
     this.Appartements.push(unAppartement);
@@ -318,11 +329,13 @@ function () {
     }
 
     this.notify();
-  };
+  }; //retourne le tableau d'appartements
+
 
   Reservation.prototype.getAppartements = function () {
     return this.Appartements;
-  };
+  }; //retourne la solde totale
+
 
   Reservation.prototype.getSolde = function () {
     return this.solde;
@@ -338,7 +351,7 @@ exports.Reservation = Reservation;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Appartement = void 0;
+exports.Appartement = void 0; //classe à décorer
 
 var Appartement =
 /** @class */
@@ -351,11 +364,13 @@ function () {
     this.check2 = piscine;
     this.check3 = sport;
     this.price = tarif * this.nombreChambres;
-  }
+  } //méthode qui retourne le nombre de chambres
+
 
   Appartement.prototype.getNombre = function () {
     return this.nombreChambres;
-  };
+  }; //les choix cochés
+
 
   Appartement.prototype.getchoix1 = function () {
     return this.check1;
@@ -367,22 +382,26 @@ function () {
 
   Appartement.prototype.getchoix3 = function () {
     return this.check3;
-  };
+  }; //le prix d'un appartement
+
 
   Appartement.prototype.prix = function () {
     return this.price;
-  };
+  }; //le texte a envoyé a la listeView
+
 
   Appartement.prototype.setText = function () {
     return "".concat(this.getName(), ", votre r\xE9servation a \xE9t\xE9 valid\xE9 avec les options: <br>\n        Abonnement au Restaurant : ").concat(this.check1 === true ? 'oui, ' : 'non,', " <br>\n        Abonnement au parking : ").concat(this.check2 === true ? 'oui, ' : 'non,', " <br>\n        Abonnement au service de M\xE9nage : ").concat(this.check3 === true ? 'oui, ' : 'non,');
-  };
+  }; //une méthode de base du premier exemple
+
 
   Appartement.prototype.showDetails = function () {
     return "Prix total : ".concat(this.prix(), " (tarif normaml)");
-  };
+  }; //retourne le nom complet
+
 
   Appartement.prototype.getName = function () {
-    return "".concat(this.nomPersonne, " ").concat(this.prenomPersonne);
+    return "".concat(this.prenomPersonne, " ").concat(this.nomPersonne, " ");
   };
 
   return Appartement;
@@ -405,7 +424,9 @@ function () {
   }
 
   soldeView.prototype.update = function (state) {
-    var solde = state.getSolde();
+    //récuparation de la solde totale
+    var solde = state.getSolde(); //insertion au niveau de la div concernée
+
     this.div.innerHTML = solde.toString();
     console.log('update: ', solde);
   };
@@ -427,7 +448,8 @@ var reservation_1 = require("./classes/reservation");
 
 var Appartement_1 = require("./classes/Appartement");
 
-var soldeView_1 = require("./classes/soldeView");
+var soldeView_1 = require("./classes/soldeView"); //déclaration des variables
+
 
 var btn = document.querySelector('#button');
 var name = document.querySelector('#name');
@@ -435,22 +457,26 @@ var prenom = document.querySelector('#prenom');
 var nmbr = document.querySelector('#nmbrC');
 var restaurant = document.querySelector('#restaurant');
 var parking = document.querySelector('#parking');
-var menage = document.querySelector('#menage');
+var menage = document.querySelector('#menage'); //instanciations des classes
+
 var reservation = new reservation_1.Reservation(0);
 var solde1 = new soldeView_1.soldeView();
-var liste1 = new listeReservations_1.ListeReservationView();
+var liste1 = new listeReservations_1.ListeReservationView(); //souscription 
+
 reservation.subscribe(solde1);
-reservation.subscribe(liste1);
+reservation.subscribe(liste1); //écoute sur le bouton ADD
+
 btn.addEventListener('click', function (e) {
+  //éviter la réactualisation de la page
   e.preventDefault(); // console.log('clicked');
+  //condition pour valider une reservation simple
 
   if (nmbr.valueAsNumber > 0 && name.value && prenom.value) {
     var appartement1 = new Appartement_1.Appartement(5000, name.value, prenom.value, nmbr.valueAsNumber, restaurant.checked, menage.checked, parking.checked);
-    reservation.addAppartement(appartement1); // reservation.getOptions(appartement1)
-
+    reservation.addAppartement(appartement1);
     console.log(reservation.getSolde());
   } else {
-    alert('nombre de participants incorrecte');
+    alert('nombre de participants incorrecte,ou champs non renseignés');
   }
 });
 },{"./classes/listeReservations":"classes/listeReservations.ts","./classes/reservation":"classes/reservation.ts","./classes/Appartement":"classes/Appartement.ts","./classes/soldeView":"classes/soldeView.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

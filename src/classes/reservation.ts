@@ -38,15 +38,15 @@ export class Reservation implements ISubject {
         this.solde += unAppartement.prix();
         // console.log('add appartement');
         if(unAppartement.getchoix1()===true){
-            let appartementWithResto=new appartementAvecAbonnementResto(unAppartement,6000)
+            let appartementWithResto=new appartementAvecAbonnementResto(unAppartement,150000)
             this.solde+= appartementWithResto.prix()
         }
         if(unAppartement.getchoix2()===true){
-            let appartementWithParking=new appartementAvecAbonnementParking(unAppartement,6000)
+            let appartementWithParking=new appartementAvecAbonnementParking(unAppartement,100000)
             this.solde+= appartementWithParking.prix()
         }
         if(unAppartement.getchoix3()===true){
-            let appartementWithMenage=new appartementAvecAbonnementServiceMenage(unAppartement,6000)
+            let appartementWithMenage=new appartementAvecAbonnementServiceMenage(unAppartement,125000)
             this.solde+= appartementWithMenage.prix()
         }
         this.notify()

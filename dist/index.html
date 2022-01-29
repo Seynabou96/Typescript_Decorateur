@@ -1,45 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typescript Decorateur</title>
     <link rel="stylesheet" href="/style.e308ff8e.css">
-<script src="/style.e308ff8e.js"></script></head>
-<body>
+  <script src="/style.e308ff8e.js"></script></head>
+  <body>
     <header>
-    
+      <nav>
+        <ul class="menu">
+          <li class="limenu">
+            <a href="#top">A propos</a>
+          </li>
+          <li class="limenu">
+            <a href="#center"> Options</a>
+          </li>
+          <li class="limenu">
+            <a href="#bottom"> Formulaire</a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <form action="">
-            <label for="name">name</label>
-            <input type="text" name="name" id="name">
-            <label for="prenom">Prenom</label>
-            <input type="text" name="prenom" id="prenom">
-            <label for="nmbrC">nombre de chambres</label>
-            <input type="number" name="nmbrC" id="nmbrC">
-            <label for="restaurant">Abonnement Restaurant</label>
-            <input type="checkbox" name="restaurant" id="restaurant">
-            <label for="parking">Abonnement Parking</label>
-            <input type="checkbox" name="parking" id="parking">
-            <label for="menage">Abonnement Service de Ménage</label>
-            <input type="checkbox" name="menage" id="menage">
-            <input type="submit" value="send" id="button">
-        </form>
-        <div id="solde">
-            
-        </div>
-        <div>
-            <ul class="ulListeReservation">
-                
-            </ul>
+      <!-- Page A propos -->
 
+      <div class="Apropos">
+        <div class="image">
+          <img src="/afterMenu.717204b8.jpeg" alt="Image Appart">
+          <div class="titreh1h3">
+            <h1>AgenceFictive</h1>
+            <h2>Vos exigences,notre challenge</h2>
+          </div>
         </div>
+        <div class="contenuApropos" id="top">
+          <h1>A propos de Nous</h1>
+          <p>
+            l'agence <strong>AgenceFictive</strong> est dans le secteur de
+            l'immobilier depuis le 29/01/2022 et vous fournit un type
+            d'appartements prisés à des prix imbattables et avec des options en
+            plus qui vous facilitent grandement la vie.Nos appartements sont à
+            des prix dépendants du nombre de chambres que vous souhaitez. Avec
+            nous, vos exigences deviennent un challenge à relever!
+          </p>
+        </div>
+      </div>
+
+      <!-- Page Options -->
+      <div class="options" id="center">
+        <h1>Nos Options</h1>
+        <div class="option1">
+          <img src="/imageResto.6add84cd.jpg" alt="resto" id="imgresto">
+          <p>
+            En partenariat avec les meilleurs restaurants de Dakar, il vous est
+            possible avec cette option de bénéficier d'un menu menu choix,
+            livraison compris dans l'abonnement pour le prix de 150000 F CFA par
+            personne.
+          </p>
+        </div>
+        <div class="option2">
+          <img src="/imageParking.9c1195f5.jpg" alt="parking" id="imgparking">
+          <p>
+            Notre parking est à votre entiére disposition avec un systéme de
+            sécurité high Tech,compris dans l'abonnement pour le prix de 100000F
+            CFA.
+          </p>
+        </div>
+        <div class="option3">
+          <img src="/imageMenage.8e4690e4.jpg" alt="menage" id="imgmenage">
+          <p>
+            Vivez dans le confort mais aussi dans la propreté!Notre partenariat
+            avecle service de nettoyage "SeitteuhSN", vous propose ses services
+            pour un abonnement de 125000 par mois.
+          </p>
+        </div>
+      </div>
+
+      <!-- Page Formulaire -->
+      <div class="formulaire" id="bottom">
+        <div class="formDisplay">
+          <h1>Formulaire de Réservation</h1>
+          <h3>Veuillez remplir ce formulaire, pour réserver un appartement</h3>
+          <form action="">
+            <div>
+              <label for="name">name</label>
+              <input type="text" name="name" id="name">
+            </div>
+            <div>
+              <label for="prenom">Prenom</label>
+              <input type="text" name="prenom" id="prenom">
+            </div>
+            <div>
+              <label for="nmbrC">nombre de chambres</label>
+              <input type="number" name="nmbrC" id="nmbrC">
+            </div>
+            <div>
+              <label for="restaurant">Abonnement Restaurant</label>
+              <input type="checkbox" name="restaurant" id="restaurant">
+            </div>
+            <div>
+              <label for="parking">Abonnement Parking</label>
+              <input type="checkbox" name="parking" id="parking">
+            </div>
+            <div>
+              <label for="menage">Abonnement Service de Ménage</label>
+              <input type="checkbox" name="menage" id="menage">
+            </div>
+            <input type="submit" value="send" id="button">
+          </form>
+        </div>
+      </div>
+
+      <div id="solde"></div>
+
+      <div class="liste">
+        <ul class="ulListeReservation"></ul>
+      </div>
     </main>
     <footer>
-    
+      <p>Merci,d'avoir visité notre site!</p>
     </footer>
+
     <script src="/app.c61986b1.js"></script>
-</body>
+  </body>
 </html>

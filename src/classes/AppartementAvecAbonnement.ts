@@ -16,7 +16,8 @@ export class AppartementAvecAbonnement implements IDecorateur {
 
     //retourne le prix de l'abonnement uniquement
     prix(): number {
-        return (this.tarif * this.getNombre());
+        // return (this.tarif * this.getNombre());
+        return this.tarif;
     }
 
     //methode de base
@@ -27,7 +28,12 @@ export class AppartementAvecAbonnement implements IDecorateur {
 
 ////classes avec Options
 
-export class appartementAvecAbonnementResto extends AppartementAvecAbonnement { }
+export class appartementAvecAbonnementResto extends AppartementAvecAbonnement { 
+    prix(): number {
+        return (this.tarif * this.getNombre());
+    }
+
+}
 
 export class appartementAvecAbonnementParking extends AppartementAvecAbonnement { }
 

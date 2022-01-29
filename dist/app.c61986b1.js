@@ -210,7 +210,8 @@ function () {
 
 
   AppartementAvecAbonnement.prototype.prix = function () {
-    return this.tarif * this.getNombre();
+    // return (this.tarif * this.getNombre());
+    return this.tarif;
   }; //methode de base
 
 
@@ -231,6 +232,10 @@ function (_super) {
   function appartementAvecAbonnementResto() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
+
+  appartementAvecAbonnementResto.prototype.prix = function () {
+    return this.tarif * this.getNombre();
+  };
 
   return appartementAvecAbonnementResto;
 }(AppartementAvecAbonnement);
@@ -314,17 +319,17 @@ function () {
     this.solde += unAppartement.prix(); // console.log('add appartement');
 
     if (unAppartement.getchoix1() === true) {
-      var appartementWithResto = new AppartementAvecAbonnement_1.appartementAvecAbonnementResto(unAppartement, 6000);
+      var appartementWithResto = new AppartementAvecAbonnement_1.appartementAvecAbonnementResto(unAppartement, 150000);
       this.solde += appartementWithResto.prix();
     }
 
     if (unAppartement.getchoix2() === true) {
-      var appartementWithParking = new AppartementAvecAbonnement_1.appartementAvecAbonnementParking(unAppartement, 6000);
+      var appartementWithParking = new AppartementAvecAbonnement_1.appartementAvecAbonnementParking(unAppartement, 100000);
       this.solde += appartementWithParking.prix();
     }
 
     if (unAppartement.getchoix3() === true) {
-      var appartementWithMenage = new AppartementAvecAbonnement_1.appartementAvecAbonnementServiceMenage(unAppartement, 6000);
+      var appartementWithMenage = new AppartementAvecAbonnement_1.appartementAvecAbonnementServiceMenage(unAppartement, 125000);
       this.solde += appartementWithMenage.prix();
     }
 
@@ -427,7 +432,7 @@ function () {
     //récuparation de la solde totale
     var solde = state.getSolde(); //insertion au niveau de la div concernée
 
-    this.div.innerHTML = solde.toString();
+    this.div.innerHTML = "\n        <h2>Notre Chiffre d'Affaires</h2>\n        <span id=\"strongest\">".concat(solde.toString(), "</span>\n        ");
     console.log('update: ', solde);
   };
 
@@ -472,7 +477,7 @@ btn.addEventListener('click', function (e) {
   //condition pour valider une reservation simple
 
   if (nmbr.valueAsNumber > 0 && name.value && prenom.value) {
-    var appartement1 = new Appartement_1.Appartement(5000, name.value, prenom.value, nmbr.valueAsNumber, restaurant.checked, menage.checked, parking.checked);
+    var appartement1 = new Appartement_1.Appartement(50000, name.value, prenom.value, nmbr.valueAsNumber, restaurant.checked, menage.checked, parking.checked);
     reservation.addAppartement(appartement1);
     console.log(reservation.getSolde());
   } else {

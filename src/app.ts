@@ -29,7 +29,7 @@ btn.addEventListener('click', (e: Event) => {
     //condition pour valider une reservation simple
     if(nmbr.valueAsNumber>0 && name.value && prenom.value){
 
-        let appartement1 = new Appartement(5000,name.value,prenom.value,nmbr.valueAsNumber,restaurant.checked,menage.checked,parking.checked);
+        let appartement1 = new Appartement(50000,name.value,prenom.value,nmbr.valueAsNumber,restaurant.checked,menage.checked,parking.checked);
         reservation.addAppartement(appartement1)
         console.log(reservation.getSolde()); 
     }
